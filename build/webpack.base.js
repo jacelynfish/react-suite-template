@@ -15,9 +15,10 @@ const webpackConfig = {
   resolve: {
     alias: {
       '@assets': path.resolve(config.common.resource, 'assets'),
+      '@store': path.resolve(config.common.resource, 'store'),
       '@reducers': path.resolve(config.common.resource, 'store/reducers'),
       '@actions': path.resolve(config.common.resource, 'store/actions'),
-      '@components': path.resolve(config.common.resource, 'components'),
+      '@components': path.resolve(config.common.resource, 'src/components'),
       '@utils': path.resolve(config.common.resource, 'utils'),
       '@': config.common.resource
     },
@@ -31,7 +32,12 @@ const webpackConfig = {
         include: config.common.resource,
         options: {
           presets: ['env', 'react'],
-          plugins: ['transform-runtime', 'preval']
+          plugins: [
+            'transform-runtime',
+            'preval',
+            'syntax-dynamic-import',
+            'dynamic-import-webpack'
+          ]
         }
       },
       {
@@ -79,6 +85,21 @@ const webpackConfig = {
   },
   externals: {},
   plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      minChunks: function(module) {
+        return module.context && module.context.indexOf('node_modules') !== -1;
+      }
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'manifest',
+      minChunks: Infinity
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'commons',
+      chunks: config.common.entries,
+      minChunks: config.common.entries.length
+    }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: path.resolve(process.cwd(), 'index.html'),

@@ -11,4 +11,4 @@ const edReducer = {
   'ed/delItem': delItem
 };
 
-export default createReducer(edReducer, [0]);
+export default createReducer(edReducer, []);

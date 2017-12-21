@@ -26,14 +26,6 @@ const devConfig = merge(baseConfig, {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'commons',
-      chunks: baseConfig.entry,
-      minChunks: baseConfig.entry.length
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'manifest'
-    }),
     new webpack.DefinePlugin({
       'process.env': {
         // https://stackoverflow.com/questions/30835213/react-from-npm-cannot-be-used-on-the-client-because-development-is-not-defined

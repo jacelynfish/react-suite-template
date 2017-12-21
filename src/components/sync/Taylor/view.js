@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import actionCreators from '@actions/taylor';
 
@@ -15,13 +17,17 @@ class Taylor extends React.Component {
 
     return (
       <ul id="taylor">
-        {data.map((item, idx) => {
-          return (
-            <li key={idx} onClick={e => this.handleClick(idx)}>
-              {item}
-            </li>
-          );
-        })}
+        <div>Taylor</div>
+        <Link to="/adele">Adele</Link>
+        <Link to="/ari">Ariana</Link>
+        {data &&
+          data.map((item, idx) => {
+            return (
+              <li key={idx} onClick={e => this.handleClick(idx)}>
+                {item}
+              </li>
+            );
+          })}
       </ul>
     );
   }
@@ -36,4 +42,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Taylor);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Taylor));

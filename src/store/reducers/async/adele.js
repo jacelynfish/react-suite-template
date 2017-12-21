@@ -6,9 +6,9 @@ function addItem(data, { item }) {
 function delItem(data, { idx }) {
   return data.filter((item, i) => i != idx);
 }
-const taylorReducer = {
-  'taylor/addItem': addItem,
-  'taylor/delItem': delItem
+const adeleReducer = {
+  'adele/addItem': addItem,
+  'adele/delItem': delItem
 };
 
-export default createReducer(taylorReducer, [1, 2]);
+export default createReducer(adeleReducer, [1, 8, 5]);
