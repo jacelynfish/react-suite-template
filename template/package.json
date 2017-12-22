@@ -1,0 +1,84 @@
+{
+  "name": "{{name}}",
+  "version": "1.0.0",
+  "description": "{{description}}",
+  "main": "index.js",
+  "scripts": {
+    "dll": "node_modules/.bin/webpack --config build/dll.base.js",
+    "start":
+      "cross-env NODE_ENV=development node_modules/.bin/webpack-dev-server --config build/webpack.dev.js",
+    "prod":
+      "cross-env NODE_ENV=production node_modules/.bin/webpack --config build/webpack.prod.js",
+    "build": "cross-env NODE_ENV=production npm run dll; npm run prod"{{#unit}},
+    "test": "cross-env NODE_ENV=test jest"{{/unit}}
+  },
+  "author": "{{author}}",
+  "dependencies": {
+    "prop-types": "*",
+    "react": "*",
+    "react-dom": "*",
+    "react-redux": "*",
+    "react-router": "*",
+    "react-router-dom": "*",
+    "redux": "*"
+  },
+  "devDependencies": {
+    "autoprefixer": "*",
+    "babel": "*",
+    "babel-core": "*",
+    "babel-jest": "*",
+    "babel-loader": "*",
+    "babel-plugin-dynamic-import-webpack": "*",
+    "babel-plugin-preval": "*",
+    "babel-plugin-syntax-dynamic-import": "*",
+    "babel-plugin-transform-runtime": "*",
+    "babel-preset-env": "*",
+    "babel-preset-react": "*",
+    "babel-runtime": "*",
+    "css-loader": "*",
+    "enzyme": "*",
+    "enzyme-adapter-react-16": "*",
+    "file-loader": "*",
+    "html-webpack-plugin": "*",
+    "identity-obj-proxy": "*",
+    "jest": "*",
+    "jsdom": "*",
+    "less": "*",
+    "less-loader": "*",
+    "postcss-loader": "*",
+    "react-hot-loader": "*",
+    "react-test-renderer": "*",
+    "style-loader": "*",
+    "url-loader": "*",
+    "webpack": "*",
+    "webpack-dev-server": "*",
+    "webpack-hot-middleware": "*",
+    "webpack-merge": "*"
+  }{{#unit}},
+  "jest": {
+    "moduleFileExtensions": ["js", "jsx"],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
+        "<rootDir>/__jest__/_mocks__/fileMocks.js",
+      "\\.(css|scss|less)$": "identity-obj-proxy",
+      "^@reducers(.*)$": "<rootDir>/src/reducers/$1",
+      "^@components(.*)$": "<rootDir>/src/components/$1",
+      "^@assets(.*)$": "<rootDir>/src/assets/$1",
+      "^@utils(.*)$": "<rootDir>/src/utils/$1",
+      "^@$": "<rootDir>/src/$1"
+    },
+    "collectCoverage": true,
+    "coverageDirectory": "<rootDir>/__jest__/",
+    "collectCoverageFrom": [
+      "src/**/**/*.{js,jsx}",
+      "!**/_mocks_/**",
+      "!**/__tests__/**",
+      "!**/assets/**"
+    ],
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    },
+    "testPathIgnorePatterns": ["<rootDir>/node_modules/", "\\.snap$"],
+    "setupFiles": ["<rootDir>/__jest__/setup.js"]
+  }{{/unit}}
+}
