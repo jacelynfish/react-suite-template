@@ -42,4 +42,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Taylor));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Taylor));

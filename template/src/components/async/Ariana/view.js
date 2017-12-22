@@ -39,4 +39,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Ariana));
+export default (withRouter(connect(mapStateToProps, mapDispatchToProps)Ariana));
