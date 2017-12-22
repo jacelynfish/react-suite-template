@@ -9,7 +9,7 @@
 npm install
 
 # Serve with hot reload at http://localhost:3000
-npm run dev
+npm start
 
 # Precompile third party vendor libraries as dll
 npm run dll

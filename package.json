@@ -1,0 +1,17 @@
+{
+  "name": "react-suite-template",
+  "description":
+    "Fast setup for react project with redux and react-router. Hot-reload during development is supported.",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jacelynfish/react-suite-template.git"
+  },
+  "keywords": ["react", "react-boilerplate", "react-template", "template"],
+  "author": "jacelynfish",
+  "license": "MIT",
+  "devDependencies": {
+    "vue-cli": "^2.8.1"
+  },
+  "homepage": "https://github.com/jacelynfish/react-suite-template#readme"
+}

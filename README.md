@@ -11,7 +11,7 @@ npm install -g vue-cli
 vue init jacelynfish/react-suite-template react-project
 cd react-Project
 npm install
-npm run dev
+npm start
 ```
 
 ## What's included
